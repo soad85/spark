@@ -9,23 +9,19 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 
 public class Router {
 
-	public static void configure() {
-		HandlebarsTemplateEngine engineTemplate = new HandlebarsTemplateEngine();
-		CapturasController capturasController = new CapturasController();
-		PerfilController perfilController = new PerfilController();
-		SigninController signinController = new SigninController();
+  public static void configure() {
+    DebugScreen.enableDebugScreen();
+    Spark.staticFiles.location("public");
 
-		DebugScreen.enableDebugScreen();
+    HandlebarsTemplateEngine engineTemplate = new HandlebarsTemplateEngine();
+    CapturasController capturasController = new CapturasController();
+    SigninController signinController = new SigninController();
+    PerfilController perfilController = new PerfilController();
 
-		Spark.staticFiles.location("public");
-		Spark.get("/capturas",
-				(request, response) -> capturasController.index(request, response),
-				engineTemplate);
-		Spark.get("/perfil", perfilController::index, engineTemplate);
-
-
-		Spark.get("/signin", signinController::index, engineTemplate);
-		Spark.post("/session", signinController::post, engineTemplate);
-	}
+    Spark.get("/capturas", capturasController::index, engineTemplate);
+    Spark.get("/perfil", perfilController::index, engineTemplate);
+    Spark.get("/signin", signinController::index, engineTemplate);
+    Spark.post("/session", signinController::post, engineTemplate);
+  }
 
 }
