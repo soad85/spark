@@ -22,7 +22,7 @@
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
-                            <!--                            <appendAssemblyId>false</appendAssemblyId>-->
+                            <!--<appendAssemblyId>false</appendAssemblyId>-->
                             <archive>
                                 <manifest>
                                     <mainClass>pokemon.Server</mainClass>
@@ -82,10 +82,7 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.21</version>
         </dependency>
-		
-		
 
 	</dependencies>
-
 
 </project>
